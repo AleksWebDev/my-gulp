@@ -22,6 +22,8 @@ const webpack = require('webpack-stream');
 
 const babel = require('gulp-babel');
 
+const imagemin = require('gulp-imagemin');
+
 
 const plumberNotify = (title) => {
     return {
@@ -81,7 +83,10 @@ gulp.task('scss', function(){
 
 
 gulp.task('img', function(){
-    return gulp.src('./src/img/**/')
+    return gulp.src('./src/img/**/*')
+
+        .pipe(imagemin({verbose:true}))
+
         .pipe(gulp.dest('./dist/img/'));
 })
 
